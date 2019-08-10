@@ -14,7 +14,7 @@ class DependencyFinderTest extends TestCase
         $finder = new DependencyFinder([__DIR__ . '/Fixtures/Circular']);
 
         $finder->build();
-        $deps = $finder->getAllFilesDependingOn(__DIR__ . '/Fixtures/Circular/A.php');
+        $deps = $finder->getAllFilesDependingOn([__DIR__ . '/Fixtures/Circular/A.php']);
 
         $this->assertCount(2, $deps);
     }
@@ -24,7 +24,7 @@ class DependencyFinderTest extends TestCase
         $finder = new DependencyFinder([__DIR__ . '/Fixtures/Circular']);
         $finder->build();
 
-        $deps = $finder->getAllFilesDependingOn(__FILE__ . 'asdf');
+        $deps = $finder->getAllFilesDependingOn([__FILE__ . 'asdf']);
         $this->assertCount(0, $deps);
     }
 }

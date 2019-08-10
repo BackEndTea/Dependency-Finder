@@ -18,7 +18,7 @@ $finder = new DependencyFinder([__DIR__.'/src/',  './vendor/psr/container/src', 
 
 $finder->build();
 
-$deps = $finder->getAllFilesDependingOn('./tests/Fixtures/Circular/A.php');
+$deps = $finder->getAllFilesDependingOn(['./tests/Fixtures/Circular/A.php']);
 
 foreach ($deps as $dep) {
     var_dump($dep);

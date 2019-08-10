@@ -17,7 +17,6 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use function array_unique;
 use function file_get_contents;
-use function realpath;
 
 class DependencyFinder
 {
@@ -84,16 +83,13 @@ class DependencyFinder
     }
 
     /**
+     * @param array<string> $fileNames
+     *
      * @return array<string>
      */
-    public function getAllFilesDependingOn(string $fileName) : array
+    public function getAllFilesDependingOn(array $fileNames) : array
     {
-        $path = realpath($fileName);
-        if ($path === false) {
-            return [];
-        }
-
-        return(new DependencyResolver())->resolve($path, $this->declareMap, $this->dependantMap);
+        return(new DependencyResolver())->resolve($fileNames, $this->declareMap, $this->dependantMap);
     }
 
     /**

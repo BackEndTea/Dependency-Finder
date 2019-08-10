@@ -6,6 +6,7 @@ namespace Depend\Dependency;
 
 use function array_key_exists;
 use function array_push;
+use function realpath;
 
 class DependencyResolver
 {
@@ -32,17 +33,21 @@ class DependencyResolver
     private $declareMap = [];
 
     /**
+     * @param array<string>                $fileNames
      * @param array<string, array<string>> $declareMap
      * @param array<string, array<string>> $dependantMap
      *
      * @return array<string>
      */
-    public function resolve(string $fileName, array $declareMap, array $dependantMap) : array
+    public function resolve(array $fileNames, array $declareMap, array $dependantMap) : array
     {
         $this->declareMap   = $declareMap;
         $this->dependantMap = $dependantMap;
-        foreach ($this->declareMap[$fileName]?? [] as $class) {
-            $this->resolveClass($class);
+        foreach ($fileNames as $fileName) {
+            $fileName = realpath($fileName);
+            foreach ($this->declareMap[$fileName]?? [] as $class) {
+                $this->resolveClass($class);
+            }
         }
 
         return $this->knownDependencies;
