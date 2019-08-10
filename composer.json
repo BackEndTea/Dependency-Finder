@@ -1,0 +1,37 @@
+{
+    "name": "backendtea/dependency-finder",
+    "description": "Find out exactly what classes depend on what other classes",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gert de Pagter",
+            "email": "BackEndTea@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "nikic/php-parser": "^4.2",
+        "symfony/finder": "^4.3"
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "^6.0",
+        "infection/infection": "^0.13.3",
+        "phpstan/phpstan": "^0.11",
+        "phpunit/phpunit": "^8.2"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Depend\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Depend\\Test\\": "tests/"
+        }
+    }
+}
