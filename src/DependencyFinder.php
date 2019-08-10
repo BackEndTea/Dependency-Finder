@@ -8,6 +8,7 @@ use Depend\Dependency\DependencyResolver;
 use Depend\PHPParser\Visitor\DeclarationCollector;
 use Depend\PHPParser\Visitor\NameCollector;
 use Depend\PHPParser\Visitor\ParentConnectorVisitor;
+use PhpParser\Error;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\Parser;
@@ -122,7 +123,11 @@ class DependencyFinder
             return new File();
         }
 
-        $nodes     = $this->parser->parse($content);
+        try {
+            $nodes     = $this->parser->parse($content);
+        }catch (Error $e) {
+            return new File();
+        }
         $traverser = new NodeTraverser();
         $traverser->addVisitor(new NameResolver());
         $traverser->addVisitor(new ParentConnectorVisitor());
