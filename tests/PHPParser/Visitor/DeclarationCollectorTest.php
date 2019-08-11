@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Depend\Test\PHPParser\Visitor;
 
 use Depend\PHPParser\Visitor\DeclarationCollector;
-use Depend\PHPParser\Visitor\NameCollector;
 use Depend\PHPParser\Visitor\ParentConnectorVisitor;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
@@ -12,8 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class DeclarationCollectorTest extends TestCase
 {
-
-    public function testItFindsAllDeclaredNames(): void
+    public function testItFindsAllDeclaredNames() : void
     {
         $parser    = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $nodes     = $parser->parse(<<<'PHP'
@@ -46,5 +46,4 @@ PHP
             'F\B',
         ], $declareCollector->declared);
     }
-
 }

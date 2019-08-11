@@ -120,8 +120,8 @@ class DependencyFinder
         }
 
         try {
-            $nodes     = $this->parser->parse($content);
-        }catch (Error $e) {
+            $nodes = $this->parser->parse($content);
+        } catch (Error $e) {
             return new File();
         }
         $traverser = new NodeTraverser();
