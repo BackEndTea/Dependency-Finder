@@ -20,9 +20,9 @@ use function file_get_contents;
 
 class DependencyFinder
 {
-    /** @var array|string[] */
+    /** @var array<string> */
     private $directories;
-    /** @var array|string[] */
+    /** @var array<string> */
     private $exclude;
 
     /**
@@ -56,8 +56,8 @@ class DependencyFinder
      * List of directories to build dependencies from.
      * for example: `new DependencyFinder(['./src', './tests', './lib']);`
      *
-     * @param array|string[] $directories
-     * @param array|string[] $exclude
+     * @param array<string> $directories
+     * @param array<string> $exclude
      */
     public function __construct(array $directories, array $exclude = [])
     {
@@ -93,7 +93,7 @@ class DependencyFinder
     }
 
     /**
-     * @param array|string[] $fileNames
+     * @param array<string> $fileNames
      */
     public function reBuild(array $fileNames) : void
     {
@@ -124,6 +124,7 @@ class DependencyFinder
         } catch (Error $e) {
             return new File();
         }
+        assert(is_array($nodes));
         $traverser = new NodeTraverser();
         $traverser->addVisitor(new NameResolver());
         $traverser->addVisitor(new ParentConnectorVisitor());

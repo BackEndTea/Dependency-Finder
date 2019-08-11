@@ -13,7 +13,7 @@ class DeclarationCollector extends NodeVisitorAbstract
     public $declared = [];
 
     /**
-     * @param array<Node> $nodes
+     * @param array<Node|mixed> $nodes
      *
      * @return array<Node>
      */

@@ -33,6 +33,10 @@ class Foo
 interface B{}
 PHP
         );
+        if($nodes === null) {
+            $this->fail('Something went wrong with the parsing of the nodes, this could possibly be due to a bug upstream.');
+        }
+
         $traverser = new NodeTraverser();
         $traverser->addVisitor(new NameResolver());
         $traverser->addVisitor(new ParentConnectorVisitor());

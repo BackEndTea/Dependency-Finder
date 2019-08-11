@@ -51,7 +51,7 @@ final class ParentConnectorVisitor extends NodeVisitorAbstract
     private $stack = [];
 
     /**
-     * @param array<Node> $nodes
+     * @param array<Node|mixed> $nodes
      *
      * @return array<Node>|null
      */

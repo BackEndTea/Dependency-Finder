@@ -14,9 +14,9 @@ final class NameCollector extends NodeVisitorAbstract
     public $resolvedNames = [];
 
     /**
-     * @param array|Node[] $nodes
+     * @param array<Node|mixed> $nodes
      *
-     * @return array|Node[]|null
+     * @return array<Node>|null
      */
     public function beforeTraverse(array $nodes) : ?array
     {
@@ -34,6 +34,7 @@ final class NameCollector extends NodeVisitorAbstract
             return NodeTraverser::DONT_TRAVERSE_CHILDREN;
         }
         if ($node instanceof Node\Name) {
+            /** @var Node|null $parent */
             $parent = $node->getAttribute(ParentConnectorVisitor::PARENT_KEY);
             if ($parent instanceof Node\Stmt\Namespace_
                 || $parent instanceof Node\Expr\ConstFetch
