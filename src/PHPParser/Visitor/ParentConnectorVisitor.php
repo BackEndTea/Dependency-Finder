@@ -42,6 +42,8 @@ use function count;
 
 /**
  * This class has been copy pasted from the infection code base, and therefore falls under their license.
+ *
+ * @internal
  */
 final class ParentConnectorVisitor extends NodeVisitorAbstract
 {

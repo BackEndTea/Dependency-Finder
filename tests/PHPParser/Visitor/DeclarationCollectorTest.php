@@ -15,8 +15,8 @@ class DeclarationCollectorTest extends TestCase
 {
     public function testItFindsAllDeclaredNames() : void
     {
-        $parser    = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
-        $nodes     = $parser->parse(<<<'PHP'
+        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+        $nodes  = $parser->parse(<<<'PHP'
 <?php
 namespace F;
 
@@ -33,7 +33,7 @@ class Foo
 interface B{}
 PHP
         );
-        if($nodes === null) {
+        if ($nodes === null) {
             $this->fail('Something went wrong with the parsing of the nodes, this could possibly be due to a bug upstream.');
         }
 

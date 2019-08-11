@@ -16,7 +16,9 @@ use PhpParser\ParserFactory;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use function array_unique;
+use function assert;
 use function file_get_contents;
+use function is_array;
 
 class DependencyFinder
 {

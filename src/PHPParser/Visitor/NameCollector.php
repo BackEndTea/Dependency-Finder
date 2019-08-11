@@ -8,6 +8,9 @@ use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 
+/**
+ * @internal
+ */
 final class NameCollector extends NodeVisitorAbstract
 {
     /** @var array<string> */

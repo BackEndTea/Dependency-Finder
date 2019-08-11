@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Depend;
 
-class File
+/**
+ * @internal
+ */
+final class File
 {
     /**
      * Array of all classes/functions declared by this file

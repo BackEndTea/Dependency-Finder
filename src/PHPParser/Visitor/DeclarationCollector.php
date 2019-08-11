@@ -7,7 +7,10 @@ namespace Depend\PHPParser\Visitor;
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
 
-class DeclarationCollector extends NodeVisitorAbstract
+/**
+ * @internal
+ */
+final class DeclarationCollector extends NodeVisitorAbstract
 {
     /** @var array<string>  */
     public $declared = [];
