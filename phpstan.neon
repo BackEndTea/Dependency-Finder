@@ -1,9 +1,14 @@
 includes:
-	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
-	- vendor/phpstan/phpstan/conf/config.levelmax.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - vendor/phpstan/phpstan/conf/config.levelmax.neon
 
 parameters:
-	paths:
-		- src
-		- tests
-	tmpDir: %currentWorkingDirectory%/.build
+    paths:
+        - src
+        - tests
+    tmpDir: %currentWorkingDirectory%/.build
+    ignoreErrors:
+        - '/Parameter #1 \$nodes of method PhpParser\\NodeTraverser::traverse\(\) expects array\<PhpParser\\Node\>, array\<PhpParser\\Node\\Stmt\>\|null given\./'
+        -
+            path: '%currentWorkingDirectory%/src/PHPParser/Visitor/DeclarationCollector.php'
+            message: '#Access to an undefined property PhpParser\\Node::\$namespacedName\.#'
